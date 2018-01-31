@@ -1,17 +1,15 @@
-﻿using SPMeta2.Common;
-using SPMeta2.Definitions;
-using SPMeta2.Definitions.Base;
-using SPMeta2.SSOM.ModelHosts;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-
-using SPMeta2.Utils;
-using Microsoft.SharePoint.Administration;
 using System.Security;
-using SPMeta2.ModelHosts;
+using Microsoft.SharePoint;
+using Microsoft.SharePoint.Administration;
+
+using SPMeta2.Common;
+using SPMeta2.Definitions;
 using SPMeta2.Exceptions;
+using SPMeta2.ModelHosts;
+using SPMeta2.SSOM.ModelHosts;
+using SPMeta2.Utils;
 
 namespace SPMeta2.SSOM.ModelHandlers
 {
@@ -49,7 +47,6 @@ namespace SPMeta2.SSOM.ModelHandlers
             {
                 base.WithResolvingModelHost(modelHostContext);
                 return;
-
             }
 
             var farmModelHost = modelHost.WithAssertAndCast<FarmModelHost>("modelHost", value => value.RequireNotNull());
@@ -59,9 +56,7 @@ namespace SPMeta2.SSOM.ModelHandlers
 
             if (existingWebApp == null)
             {
-                throw new SPMeta2Exception(string.Format(
-                    "Cannot find web aplication by definition:[]",
-                    webApplicationDefinition));
+                throw new SPMeta2Exception(string.Format("Cannot find web aplication by definition:{0}", webApplicationDefinition));
             }
 
             var webAppModelHost = ModelHostBase.Inherit<WebApplicationModelHost>(farmModelHost, h =>
@@ -112,7 +107,7 @@ namespace SPMeta2.SSOM.ModelHandlers
 
                     var password = new SecureString();
 
-                    foreach (char c in definition.ApplicationPoolPassword.ToCharArray())
+                    foreach (char c in definition.ApplicationPoolPassword)
                         password.AppendChar(c);
 
                     webAppBuilder.ApplicationPoolPassword = password;
@@ -132,6 +127,9 @@ namespace SPMeta2.SSOM.ModelHandlers
                 var webApp = webAppBuilder.Create();
                 webApp.Provision();
 
+                webApp.BrowserFileHandling = (SPBrowserFileHandling)(int)definition.BrowserFileHandling;
+                webApp.Update();
+
                 InvokeOnModelEvent(this, new ModelEventArgs
                 {
                     CurrentModelNode = null,
@@ -145,6 +143,9 @@ namespace SPMeta2.SSOM.ModelHandlers
             }
             else
             {
+                existingWebApp.BrowserFileHandling = (SPBrowserFileHandling)(int)definition.BrowserFileHandling;
+                existingWebApp.Update();
+
                 InvokeOnModelEvent(this, new ModelEventArgs
                 {
                     CurrentModelNode = null,
@@ -170,6 +171,5 @@ namespace SPMeta2.SSOM.ModelHandlers
         }
 
         #endregion
-
     }
 }

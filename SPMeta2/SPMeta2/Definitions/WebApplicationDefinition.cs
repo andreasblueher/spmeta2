@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+
 using SPMeta2.Attributes;
 using SPMeta2.Attributes.Capabilities;
 using SPMeta2.Attributes.Identity;
 using SPMeta2.Attributes.Regression;
+using SPMeta2.Enumerations;
 using SPMeta2.Utils;
 
 namespace SPMeta2.Definitions
@@ -26,6 +28,11 @@ namespace SPMeta2.Definitions
     [ParentHostCapability(typeof(FarmDefinition))]
     public class WebApplicationDefinition : DefinitionBase
     {
+        public WebApplicationDefinition()
+        {
+            BrowserFileHandling = BuiltInBrowserFileHandling.Permissive;
+        }
+
         #region properties
 
         /// <summary>
@@ -125,8 +132,15 @@ namespace SPMeta2.Definitions
         [DataMember]
         public bool UseNTLMExclusively { get; set; }
 
-        #endregion
+        /// <summary>
+        /// Defines the browser file handling for the webapplication
+        /// </summary>
+        /// 
+        [ExpectValidation]
+        [DataMember]
+        public BuiltInBrowserFileHandling BrowserFileHandling { get; set; }
 
+        #endregion
 
         #region methods
 

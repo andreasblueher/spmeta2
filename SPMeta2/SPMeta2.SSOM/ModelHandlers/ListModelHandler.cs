@@ -113,11 +113,11 @@ namespace SPMeta2.SSOM.ModelHandlers
             });
 
             list.ContentTypesEnabled = definition.ContentTypesEnabled;
+            list.BrowserFileHandling = (SPBrowserFileHandling)(int)definition.BrowserFileHandling;
 
             if (!string.IsNullOrEmpty(definition.DraftVersionVisibility))
             {
-                var draftOption =
-                    (DraftVisibilityType)Enum.Parse(typeof(DraftVisibilityType), definition.DraftVersionVisibility);
+                var draftOption = (DraftVisibilityType)Enum.Parse(typeof(DraftVisibilityType), definition.DraftVersionVisibility);
                 list.DraftVersionVisibility = draftOption;
             }
 

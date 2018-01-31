@@ -47,6 +47,19 @@ namespace SPMeta2.Regression.SSOM.Validation
                     assert.SkipProperty(m => m.Description);
             });
 
+            assert.ShouldBeEqual((p, s, d) =>
+            {
+                var srcProp = s.GetExpressionValue(m => m.BrowserFileHandling);
+
+                return new PropertyValidationResult
+                {
+                    Tag = p.Tag,
+                    Src = srcProp,
+                    Dst = null,
+                    IsValid = spObject.BrowserFileHandling == (SPBrowserFileHandling) (int) s.BrowserFileHandling
+                };
+            });
+
             if (definition.EnableAssignToEmail.HasValue)
             {
                 assert.ShouldBeEqual(m => m.EnableAssignToEmail, o => o.EnableAssignToEmail);
@@ -207,8 +220,8 @@ namespace SPMeta2.Regression.SSOM.Validation
                         Src = srcProp,
                         Dst = null,
                         IsValid =
-                            (spObject.TemplateFeatureId == listTemplate.FeatureId) &&
-                            ((int)spObject.BaseTemplate == (int)listTemplate.Type)
+                            spObject.TemplateFeatureId == listTemplate.FeatureId &&
+                            (int)spObject.BaseTemplate == (int)listTemplate.Type
                     };
                 });
             }

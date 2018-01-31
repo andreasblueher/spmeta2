@@ -221,6 +221,7 @@
     <Compile Include="Diagnostic\DiagnosticInfo.cs" />
     <Compile Include="Diagnostic\SPMeta2Diagnostic.cs" />
     <Compile Include="Diagnostic\ModelStatInfo.cs" />
+    <Compile Include="Enumerations\BuiltInBrowserFileHandling.cs" />
     <Compile Include="Enumerations\BuiltInOfficialFileHostAction.cs" />
     <Compile Include="Enumerations\BuiltInAddFieldOptions.cs" />
     <Compile Include="Enumerations\BuiltInAggregationsStatus.cs" />

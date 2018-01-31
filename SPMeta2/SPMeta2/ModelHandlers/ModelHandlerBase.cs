@@ -115,7 +115,5 @@ namespace SPMeta2.ModelHandlers
         }
 
         #endregion
-
-
     }
 }

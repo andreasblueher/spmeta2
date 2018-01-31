@@ -11,6 +11,5 @@
         public static string Extranet = "Extranet";
 
         #endregion
-
     }
 }

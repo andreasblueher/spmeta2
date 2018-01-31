@@ -6,6 +6,7 @@ using SPMeta2.Attributes;
 using SPMeta2.Attributes.Capabilities;
 using SPMeta2.Attributes.Identity;
 using SPMeta2.Attributes.Regression;
+using SPMeta2.Enumerations;
 
 namespace SPMeta2.Definitions
 {
@@ -39,6 +40,8 @@ namespace SPMeta2.Definitions
             TitleResource = new List<ValueForUICulture>();
             DescriptionResource = new List<ValueForUICulture>();
             IndexedRootFolderPropertyKeys = new List<IndexedPropertyValue>();
+
+            BrowserFileHandling = BuiltInBrowserFileHandling.Permissive;
         }
 
         #region properties
@@ -168,37 +171,31 @@ namespace SPMeta2.Definitions
 
         [ExpectValidation]
         //[ExpectUpdate]
-
         [DataMember]
         public bool? EnableAttachments { get; set; }
 
         [ExpectValidation]
         //[ExpectUpdate]
-
         [DataMember]
         public bool? EnableFolderCreation { get; set; }
 
         [ExpectValidation]
         //[ExpectUpdate]
-
         [DataMember]
         public bool? EnableMinorVersions { get; set; }
 
         [ExpectValidation]
         //[ExpectUpdate]
-
         [DataMember]
         public bool? EnableModeration { get; set; }
 
         [ExpectValidation]
         //[ExpectUpdate]
-
         [DataMember]
         public bool? EnableVersioning { get; set; }
 
         [ExpectValidation]
         //[ExpectUpdate]
-
         [DataMember]
         public bool? ForceCheckout { get; set; }
 
@@ -234,7 +231,6 @@ namespace SPMeta2.Definitions
         /// </summary>
         [DataMember]
         [ExpectValidation]
-
         public int? MajorWithMinorVersionsLimit { get; set; }
 
         /// <summary>
@@ -295,6 +291,15 @@ namespace SPMeta2.Definitions
         [ExpectUpdate]
         [DataMember]
         public bool? DisableGridEditing { get; set; }
+
+        /// <summary>
+        /// Represents SPList.BrowserFileHandling property.
+        /// Supported only with SSOM provision
+        /// https://github.com/SubPointSolutions/spmeta2/issues/1087
+        /// </summary>
+        [ExpectValidation]
+        [DataMember]
+        public BuiltInBrowserFileHandling BrowserFileHandling { get; set; }
 
         #endregion
 

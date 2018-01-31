@@ -54,6 +54,8 @@ namespace SPMeta2.Containers.DefinitionGenerators
                     def.DraftVersionVisibility = string.Empty;
                 }
 
+                def.BrowserFileHandling = Rnd.RandomEnumValue<BuiltInBrowserFileHandling>();
+
                 //def.NoCrawl = Rnd.NullableBool();
                 //def.OnQuickLaunch = Rnd.NullableBool();
                 //def.Hidden = Rnd.NullableBool();
