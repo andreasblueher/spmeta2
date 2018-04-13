@@ -134,6 +134,8 @@ namespace SPMeta2.Definitions
 
         /// <summary>
         /// Defines the browser file handling for the webapplication
+        /// Supported only with SSOM provision
+        /// https://github.com/SubPointSolutions/spmeta2/issues/1087
         /// </summary>
         /// 
         [ExpectValidation]
@@ -157,6 +159,8 @@ namespace SPMeta2.Definitions
                           .AddPropertyValue(p => p.ApplicationPoolId)
                           .AddPropertyValue(p => p.UseSecureSocketsLayer)
                           .AddPropertyValue(p => p.ManagedAccount)
+
+                          .AddPropertyValue(p => p.BrowserFileHandling)
                           .ToString();
         }
 

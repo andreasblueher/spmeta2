@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+
 using SPMeta2.Attributes;
 using SPMeta2.Attributes.Capabilities;
 using SPMeta2.Attributes.Identity;
@@ -11,7 +12,7 @@ namespace SPMeta2.Definitions
     /// <summary>
     /// Allows to define and deploy alternate URL.
     /// </summary>
-    [SPObjectType(SPObjectModelType.SSOM, "Microsoft.SharePoint.Administration.SPAlternateUrl", "Microsoft.SharePoint")]
+    [SPObjectType(SPObjectModelType.SSOM, "Microsoft.SharePoint.Administration.AllowedInlineDownloadedMimeTypes", "Microsoft.SharePoint")]
 
     [DefaultRootHost(typeof(WebApplicationDefinition))]
     [DefaultParentHost(typeof(WebApplicationDefinition))]
@@ -24,19 +25,14 @@ namespace SPMeta2.Definitions
     [ExpectManyInstances]
 
     [ParentHostCapability(typeof(WebApplicationDefinition))]
-    public class AlternateUrlDefinition : DefinitionBase
+    public class AllowedInlineDownloadedMimeTypeDefinition : DefinitionBase
     {
         #region properties
 
         [ExpectRequired]
         [DataMember]
         [IdentityKey]
-        public string Url { get; set; }
-
-        [ExpectRequired]
-        [DataMember]
-        [IdentityKey]
-        public string UrlZone { get; set; }
+        public string MimeType { get; set; }
 
         #endregion
 
@@ -44,11 +40,10 @@ namespace SPMeta2.Definitions
 
         public override string ToString()
         {
-            return new ToStringResult<AlternateUrlDefinition>(this)
-                          .AddPropertyValue(p => p.Url)
-                          .AddPropertyValue(p => p.UrlZone)
+            return new ToStringResult<AllowedInlineDownloadedMimeTypeDefinition>(this)
+                .AddPropertyValue(p => p.MimeType)
 
-                          .ToString();
+                .ToString();
         }
 
         #endregion

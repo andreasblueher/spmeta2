@@ -143,6 +143,7 @@
     <Compile Include="Common\ModelHostResolveContext.cs" />
     <Compile Include="Common\DefaultModelNodePropertyBagValue.cs" />
     <Compile Include="Config\SearchSettingsConfig.cs" />
+    <Compile Include="Definitions\AllowedInlineDownloadedMimeTypeDefinition.cs" />
     <Compile Include="Definitions\AlternateUrlDefinition.cs" />
     <Compile Include="Definitions\AnonymousAccessSettingsDefinition.cs" />
     <Compile Include="Definitions\SuiteBarDefinition.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Diagnostic\DiagnosticInfo.cs" />
     <Compile Include="Diagnostic\SPMeta2Diagnostic.cs" />
     <Compile Include="Diagnostic\ModelStatInfo.cs" />
+    <Compile Include="Enumerations\BuiltInAllowedInlineDownloadedMimeTypes.cs" />
     <Compile Include="Enumerations\BuiltInBrowserFileHandling.cs" />
     <Compile Include="Enumerations\BuiltInOfficialFileHostAction.cs" />
     <Compile Include="Enumerations\BuiltInAddFieldOptions.cs" />
@@ -431,6 +433,7 @@
     <Compile Include="Services\WebPartChromeTypesConvertService.cs" />
     <Compile Include="Services\Webparts\WebPartParameterBindingsOptions.cs" />
     <Compile Include="ServiceContainer.cs" />
+    <Compile Include="Syntax\Default\AllowedInlineDownloadedMimeTypeDefinitionSyntax.cs" />
     <Compile Include="Syntax\Default\Interfaces\IFarmSolutionModelHostNode.cs" />
     <Compile Include="Syntax\Default\SuiteBarDefinitionSyntax.cs" />
     <Compile Include="Syntax\Default\SharePointDesignerSettingsSyntax.cs" />

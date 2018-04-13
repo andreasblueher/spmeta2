@@ -199,6 +199,7 @@
     <Compile Include="Extensions\SPContextExtensions.cs" />
     <Compile Include="Extensions\SPViewCollectionExtensions.cs" />
     <Compile Include="Extensions\WebPartExtensions.cs" />
+    <Compile Include="ModelHandlers\AllowedInlineDownloadedMimeTypeHandler.cs" />
     <Compile Include="ModelHandlers\AnonymousAccessSettingsModelHandler.cs" />
     <Compile Include="ModelHandlers\SuiteBarModelHandler.cs" />
     <Compile Include="ModelHandlers\OfficialFileHostModelHandler.cs" />

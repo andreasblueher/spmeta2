@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+
 using SPMeta2.Definitions;
 using SPMeta2.Models;
 
@@ -8,22 +9,21 @@ namespace SPMeta2.Syntax.Default
 {
     [Serializable]
     [DataContract]
-    public class AlternateUrlModelNode : TypedModelNode
+    public class AllowedInlineDownloadedMimeTypeModelNode : TypedModelNode
     {
 
     }
-
-    public static class AlternateUrlDefinitionSyntax
+    public static class AllowedInlineDownloadedMimeTypeDefinitionSyntax
     {
         #region methods
 
-        public static TModelNode AddAlternateUrl<TModelNode>(this TModelNode model, AlternateUrlDefinition definition)
+        public static TModelNode AddAllowedInlineDownloadedMimeType<TModelNode>(this TModelNode model, AllowedInlineDownloadedMimeTypeDefinition definition)
             where TModelNode : ModelNode, IWebApplicationModelNode, new()
         {
-            return AddAlternateUrl(model, definition, null);
+            return AddAllowedInlineDownloadedMimeType(model, definition, null);
         }
 
-        public static TModelNode AddAlternateUrl<TModelNode>(this TModelNode model, AlternateUrlDefinition definition,
+        public static TModelNode AddAllowedInlineDownloadedMimeType<TModelNode>(this TModelNode model, AllowedInlineDownloadedMimeTypeDefinition definition,
             Action<AlternateUrlModelNode> action)
             where TModelNode : ModelNode, IWebApplicationModelNode, new()
         {
@@ -34,8 +34,8 @@ namespace SPMeta2.Syntax.Default
 
         #region array overload
 
-        public static TModelNode AddAlternateUrls<TModelNode>(this TModelNode model, IEnumerable<AlternateUrlDefinition> definitions)
-           where TModelNode : ModelNode, IWebApplicationModelNode, new()
+        public static TModelNode AddAllowedInlineDownloadedMimeTypes<TModelNode>(this TModelNode model, IEnumerable<AllowedInlineDownloadedMimeTypeDefinition> definitions)
+            where TModelNode : ModelNode, IWebApplicationModelNode, new()
         {
             foreach (var definition in definitions)
                 model.AddDefinitionNode(definition);
